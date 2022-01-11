@@ -13,12 +13,8 @@ import React from 'react';
 import { useState } from 'react';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
-import {
-  AccountBalanceWalletRounded,
-  ListAltRounded,
-} from '@mui/icons-material';
+import { ListAltRounded } from '@mui/icons-material';
 import ConnectPopup from './ConnectPopup';
-import { AnyAaaaRecord } from 'dns';
 
 const CONVERSION_RATE = 3;
 

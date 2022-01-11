@@ -1,13 +1,6 @@
-import { forwardRef, Fragment, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 
-import { formatEther } from '@ethersproject/units';
-import {
-  NoEthereumProviderError,
-  UserRejectedRequestError as UserRejectedRequestErrorInjected,
-} from '@web3-react/injected-connector';
-import { UserRejectedRequestError as UserRejectedRequestErrorFrame } from '@web3-react/frame-connector';
-import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } from '@web3-react/walletconnect-connector';
-import { useWeb3React, UnsupportedChainIdError } from '@web3-react/core';
+import { useWeb3React } from '@web3-react/core';
 import {
   Box,
   Button,
@@ -26,7 +19,6 @@ import { TransitionProps } from '@mui/material/transitions';
 import { Injected } from '@utils/connectors';
 import {
   AccountBalanceWalletRounded,
-  AddLinkRounded,
   LinkOffRounded,
 } from '@mui/icons-material';
 
@@ -68,22 +60,13 @@ export default function ConnectPopup({ open, handleClose }: PopupModalProps) {
   }
 
   useEffect(() => {
-    console.log({
-      active,
-      account,
-      library,
-      activate,
-      deactivate,
-      chainId,
-      error,
-    });
-    if (library) {
+    if (account && library) {
       library.eth
         .getBalance(account)
         .then((data: string) => setBalance(data))
         .catch((err: any) => console.log(err));
     }
-  }, [active, account, library, activate, deactivate, chainId, error]);
+  }, [account, library]);
 
   const handleWalletConnect = async () => {
     setIsLoading(true);
