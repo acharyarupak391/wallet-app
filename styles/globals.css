@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+.rounded {
+  width: 350px;
+}
+
+.rounded fieldset {
+  border-radius: 40px;
+}
